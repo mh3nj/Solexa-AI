@@ -18,31 +18,31 @@ Rust and Tauri on the backend, React and TypeScript on the frontend. The core is
   <table>
     <tr>
       <td align="center" width="50%">
-        <img src="screenshots/main-top.png" alt="Main workspace top" width="100%" />
+        <img src="screenshots/main-top.webp" alt="Main workspace top" width="100%" />
         <br />
         <sub>Main workspace: projects, team and tasks</sub>
       </td>
       <td align="center" width="50%">
-        <img src="screenshots/main-bottom.png" alt="Main workspace bottom" width="100%" />
+        <img src="screenshots/main-bottom.webp" alt="Main workspace bottom" width="100%" />
         <br />
         <sub>Main workspace: requests, rules and resource limits</sub>
       </td>
     </tr>
     <tr>
       <td align="center" width="50%">
-        <img src="screenshots/settings-general.png" alt="Settings general" width="100%" />
+        <img src="screenshots/settings-general.webp" alt="Settings general" width="100%" />
         <br />
         <sub>Settings: language, system tray and startup</sub>
       </td>
       <td align="center" width="50%">
-        <img src="screenshots/settings-engine.png" alt="Settings engine" width="100%" />
+        <img src="screenshots/settings-engine.webp" alt="Settings engine" width="100%" />
         <br />
         <sub>Settings: engine limits and approval rules</sub>
       </td>
     </tr>
     <tr>
       <td align="center" width="50%">
-        <img src="screenshots/settings-appearance.png" alt="Settings appearance" width="100%" />
+        <img src="screenshots/settings-appearance.webp" alt="Settings appearance" width="100%" />
         <br />
         <sub>Settings: theme studio and color preview</sub>
       </td>
