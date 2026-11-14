@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solexa</title>
+<meta name="description" content="A small AI coding team for your desktop. Built offline in 2026, canceled.">
+<meta name="theme-color" content="#f6f3ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131210" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f6f3ee;
+  --fg: #1b1916;
+  --muted: #79736a;
+  --line: #e0d9cd;
+  --accent: #b4552d;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131210;
+    --fg: #eae5dd;
+    --muted: #8a8175;
+    --line: #2a2620;
+    --accent: #e07a4d;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 4rem 1.5rem;
+  background: var(--bg);
+  color: var(--fg);
+  font: 400 1rem/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background .3s, color .3s;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(70rem 45rem at 50% 0%, color-mix(in oklab, var(--accent) 7%, transparent), transparent 65%);
+  pointer-events: none;
+}
+
+::selection { background: color-mix(in oklab, var(--accent) 25%, transparent); }
+
+main {
+  width: 100%;
+  max-width: 33rem;
+  animation: rise .9s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(.7rem); }
+  to   { opacity: 1; transform: none; }
+}
+
+nav {
+  position: fixed;
+  top: 1.25rem;
+  inset-inline-end: 1.5rem;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .8rem;
+  letter-spacing: .1em;
+  color: var(--muted);
+}
+
+nav button {
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: .25rem;
+  cursor: pointer;
+  transition: color .2s;
+}
+
+nav button:hover { color: var(--fg); }
+nav button[aria-pressed="true"] { color: var(--fg); }
+nav span { opacity: .5; }
+
+h1 {
+  margin: 0 0 1.25rem;
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(2.75rem, 10vw, 4.5rem);
+  line-height: .95;
+  letter-spacing: -.025em;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  margin: 0 0 2.25rem;
+  padding: .35rem .8rem .35rem .65rem;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  font-size: .78rem;
+  letter-spacing: .04em;
+  color: var(--muted);
+}
+
+.status::before {
+  content: "";
+  width: .4rem;
+  height: .4rem;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.rule {
+  width: 2.5rem;
+  height: 1px;
+  background: var(--line);
+  margin: 0 0 1.75rem;
+}
+
+.lede { margin: 0 0 .5rem; font-size: 1.1rem; }
+.meta { margin: 0 0 2.25rem; color: var(--muted); }
+
+.note {
+  margin: 0 0 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.note strong { color: var(--fg); font-weight: 500; }
+
+footer {
+  display: flex;
+  gap: 1.5rem;
+  font-size: .9rem;
+}
+
+footer a {
+  color: var(--fg);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: .1rem;
+  transition: border-color .2s;
+}
+
+footer a:hover { border-color: var(--accent); }
+
+.sorry {
+  margin: 2.75rem 0 0;
+  font-size: .85rem;
+  color: var(--muted);
+  opacity: .75;
+}
+
+button:focus-visible, a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+[dir="rtl"] body { font-family: Vazirmatn, Tahoma, sans-serif; }
+
+[dir="rtl"] h1 {
+  font-family: Vazirmatn, Tahoma, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  font-size: clamp(2.5rem, 9vw, 4rem);
+}
+
+[hidden] { display: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  main { animation: none; }
+  * { transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<nav aria-label="Language">
+  <button type="button" data-lang="en" aria-pressed="true">EN</button>
+  <span>·</span>
+  <button type="button" data-lang="de" aria-pressed="false">DE</button>
+  <span>·</span>
+  <button type="button" data-lang="fa" aria-pressed="false">FA</button>
+</nav>
+
+<main>
+
+  <article lang="en" data-panel="en">
+    <h1>Solexa</h1>
+    <p class="status">Canceled</p>
+    <div class="rule"></div>
+    <p class="lede">A small AI coding team for your desktop.</p>
+    <p class="meta">Started in early 2026. Offline. In Iran.</p>
+    <p class="note">The code is here, <strong>MIT</strong>. Take whatever is useful.</p>
+    <footer>
+      <a href="https://github.com/mh3nj/Solexa">GitHub</a>
+      <a href="https://github.com/mh3nj/Solexa/releases">Release</a>
+    </footer>
+    <p class="sorry">Its canceled.<br>I'm sorry &lt;3.</p>
+  </article>
+
+  <article lang="de" data-panel="de" hidden>
+    <h1>Solexa</h1>
+    <p class="status">Eingestellt</p>
+    <div class="rule"></div>
+    <p class="lede">Ein kleines KI-Programmiererteam für den Desktop.</p>
+    <p class="meta">Angefangen Anfang 2026. Offline. Im Iran.</p>
+    <p class="note">Der Code ist hier, <strong>MIT</strong>. Nimm, was dir hilft.</p>
+    <footer>
+      <a href="https://github.com/mh3nj/Solexa">GitHub</a>
+      <a href="https://github.com/mh3nj/Solexa/releases">Version</a>
+    </footer>
+    <p class="sorry">Es tut mir leid &lt;3.</p>
+  </article>
+
+  <article lang="fa" dir="rtl" data-panel="fa" hidden>
+    <h1>سولکسا</h1>
+    <p class="status">متوقف شد</p>
+    <div class="rule"></div>
+    <p class="lede">یک تیم کوچک برنامه‌نویسی هوش مصنوعی برای دسکتاپ.</p>
+    <p class="meta">اوایل ۲۰۲۶ شروع شد. بدون اینترنت. در ایران.</p>
+    <p class="note">کد اینجاست، با مجوز <strong>MIT</strong>. هرچه به کارت می‌آید بردار.</p>
+    <footer>
+      <a href="https://github.com/mh3nj/Solexa">گیت‌هاب</a>
+      <a href="https://github.com/mh3nj/Solexa/releases">نسخه</a>
+    </footer>
+    <p class="sorry">شرمنده‌ام &lt;3</p>
+  </article>
+
+</main>
+
+<script>
+(function () {
+  var titles = {
+    en: "Solexa",
+    de: "Solexa",
+    fa: "سولکسا"
+  };
+  var buttons = document.querySelectorAll("nav button[data-lang]");
+  var panels = document.querySelectorAll("[data-panel]");
+
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = (lang === "fa") ? "rtl" : "ltr";
+    document.title = titles[lang];
+    panels.forEach(function (p) {
+      p.hidden = p.dataset.panel !== lang;
+    });
+    buttons.forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
+    });
+    try { localStorage.setItem("solexa-lang", lang); } catch (e) {}
+  }
+
+  buttons.forEach(function (b) {
+    b.addEventListener("click", function () { setLang(b.dataset.lang); });
+  });
+
+  var saved = null;
+  try { saved = localStorage.getItem("solexa-lang"); } catch (e) {}
+  var guess = (navigator.language || "en").slice(0, 2);
+  if (!["en", "de", "fa"].includes(guess)) guess = "en";
+  setLang(saved && ["en", "de", "fa"].includes(saved) ? saved : guess);
+})();
+</script>
+
+</body>
+</html>
