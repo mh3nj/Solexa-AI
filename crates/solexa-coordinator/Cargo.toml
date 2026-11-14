@@ -1,0 +1,28 @@
+[package]
+name = "solexa-coordinator"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+solexa-domain.workspace = true
+solexa-events.workspace = true
+solexa-storage.workspace = true
+solexa-models.workspace = true
+solexa-verification.workspace = true
+solexa-resources.workspace = true
+solexa-brain.workspace = true
+solexa-sync.workspace = true
+solexa-github.workspace = true
+futures = "0.3"
+serde.workspace = true
+serde_json.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+anyhow.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+
+[dev-dependencies]
+async-trait.workspace = true
+tempfile = "=3.10.1"

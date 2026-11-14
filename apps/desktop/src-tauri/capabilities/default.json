@@ -1,0 +1,9 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Capabilities for the SOLEXA main window: core window/event APIs only. All actual orchestration goes through explicit Rust commands (submit_request, list_tasks, ...), not generic filesystem/shell access.",
+  "windows": ["main"],
+  "permissions": [
+    "core:default"
+  ]
+}

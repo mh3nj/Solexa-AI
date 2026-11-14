@@ -1,0 +1,18 @@
+[package]
+name = "solexa-sync"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+solexa-domain.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+anyhow.workspace = true
+
+[dev-dependencies]
+# Pinned to an older release, same reason as the workspace's getrandom
+# pin: this sandbox's cargo (1.75) can't parse manifests declaring the
+# nightly-only `edition2024` feature, which tempfile's newer transitive
+# `fastrand`/`getrandom` versions require.
+tempfile = "=3.10.1"

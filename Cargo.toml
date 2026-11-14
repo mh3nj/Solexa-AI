@@ -1,0 +1,53 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/solexa-events",
+    "crates/solexa-domain",
+    "crates/solexa-storage",
+    "crates/solexa-models",
+    "crates/solexa-verification",
+    "crates/solexa-resources",
+    "crates/solexa-brain",
+    "crates/solexa-coordinator",
+    "crates/solexa-sync",
+    "crates/solexa-github",
+]
+# apps/desktop/src-tauri is intentionally NOT a member of this workspace
+# see apps/desktop/src-tauri/Cargo.toml for why (short version: this
+# sandbox's apt-installed cargo is 1.75, and Tauri's dependency tree has
+# moved on to crates requiring the `edition2024` Cargo feature, which
+# 1.75 can't even parse). It's a real, complete, standalone crate; build
+# it separately with a current Rust toolchain (rustup, not apt).
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+
+[workspace.dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+uuid = { version = "=1.10.0", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+thiserror = "1"
+anyhow = "1"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "sync", "time"] }
+async-trait = "0.1"
+tracing = "0.1"
+rusqlite = { version = "0.31", features = ["bundled"] }
+# Pinned: this sandbox's cargo (1.75, from Ubuntu noble) can't parse
+# manifests using the nightly-only `edition2024` feature. Newer
+# getrandom releases (a transitive dep of uuid's "v4" feature) declare
+# that edition, so we pin to the last 0.2.x release to keep the whole
+# workspace resolvable on a stable, apt-installed toolchain.
+getrandom = "=0.2.15"
+
+solexa-events = { path = "crates/solexa-events" }
+solexa-domain = { path = "crates/solexa-domain" }
+solexa-storage = { path = "crates/solexa-storage" }
+solexa-models = { path = "crates/solexa-models" }
+solexa-verification = { path = "crates/solexa-verification" }
+solexa-resources = { path = "crates/solexa-resources" }
+solexa-brain = { path = "crates/solexa-brain" }
+solexa-sync = { path = "crates/solexa-sync" }
+solexa-github = { path = "crates/solexa-github" }

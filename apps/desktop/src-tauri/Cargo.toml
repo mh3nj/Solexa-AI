@@ -1,0 +1,52 @@
+# This crate deliberately stands alone (`[workspace]` below, rather than
+# being listed in the root Cargo.toml's `members`). Tauri 2's dependency
+# tree pulls in crates several layers down (icu_provider and the rest of
+# the ICU4X stack, reached via `url`/`idna`, plus `time`) that declare
+# the nightly-only `edition2024` Cargo feature. The Rust toolchain
+# available in this sandbox is 1.75 (the Ubuntu 24.04 apt package),
+# which can't even parse those manifests, pinning one offending crate
+# just surfaces the next one several layers deeper, so this isn't
+# fixable by a few version pins here.
+#
+# The engine (crates/*) has no such requirement and builds + tests clean
+# on 1.75, that's what `cargo test` from the repo root verifies. This
+# crate is real, complete source, meant to be built with a current Rust
+# toolchain (`rustup update stable`, or whatever ships on your machine)
+# via:
+#
+#   cd apps/desktop/src-tauri && cargo build
+#
+# or, more conveniently, `cargo tauri dev` / `cargo tauri build` from
+# apps/desktop/ once the Tauri CLI is installed (`cargo install
+# tauri-cli --version "^2"`). It has not been compiled in this sandbox,
+# treat it as reviewed-but-unverified until your own build confirms it.
+[workspace]
+
+[package]
+name = "solexa-desktop"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+
+[[bin]]
+name = "solexa-desktop"
+path = "src/main.rs"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+solexa-domain = { path = "../../../crates/solexa-domain" }
+solexa-events = { path = "../../../crates/solexa-events" }
+solexa-storage = { path = "../../../crates/solexa-storage" }
+solexa-models = { path = "../../../crates/solexa-models" }
+solexa-coordinator = { path = "../../../crates/solexa-coordinator" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+chrono = { version = "0.4", features = ["serde"] }
+uuid = { version = "1", features = ["v4", "serde"] }
+anyhow = "1"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "sync", "time"] }
+tracing = "0.1"
+tauri = { version = "2", features = ["tray-icon"] }
+tauri-plugin-autostart = "2"
