@@ -4,7 +4,7 @@
 
 I'm sorry <3.
 
-The code is here as I left it. No roadmap, no support, no updates. If any part of it is useful to you, take it.
+The code is here as I left it. If any part of it is useful to you, take it.
 
 ## What it was
 
