@@ -12,6 +12,10 @@ A desktop app for running a small team of AI agents on a coding project. You giv
 
 Rust and Tauri on the backend, React and TypeScript on the frontend. The core is split into crates: domain, models, coordinator, storage, sync, github, verification. The desktop app is a thin shell around them.
 
+## Screenshots
+
+
+
 ## Installers
 
 Windows only. Nothing for Linux or macOS.
