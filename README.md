@@ -46,4 +46,5 @@ There were 363 tests passing when I stopped. They cover domain logic, coordinati
 
 ## License
 
+MIT License.
 See the `LICENSE` file.
